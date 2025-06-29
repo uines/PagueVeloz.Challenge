@@ -121,7 +121,7 @@ Bash
     cd PagueVeloz.Challenge.Api
     dotnet run
 
-A aplicação será iniciada, geralmente na porta `5000` (HTTP) e `5001` (HTTPS). Você verá as URLs no console.
+A aplicação será iniciada, geralmente na porta `5115` (HTTP) e `7075` (HTTPS). Você verá as URLs no console.
 
 ### Rodar a Aplicação com Docker Compose
 Esta é a forma recomendada para executar a aplicação, pois encapsula todas as dependências e o banco de dados em contêineres, proporcionando um ambiente isolado e consistente.
