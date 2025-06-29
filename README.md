@@ -8,51 +8,51 @@ Este projeto é uma implementação do desafio técnico para a vaga de Desenvolv
 Sumário
 -------
 
-*   [Visão Geral do Projeto](https://www.google.com/search?q=%23vis%C3%A3o-geral-do-projeto)
+*   [Visão Geral do Projeto](#visão-geral-do-projeto)
     
-*   [Como Configurar e Rodar o Projeto](https://www.google.com/search?q=%23como-configurar-e-rodar-o-projeto)
+*   [Como Configurar e Rodar o Projeto](#como-configurar-e-rodar-o-projeto)
     
-    *   [Pré-requisitos](https://www.google.com/search?q=%23pr%C3%A9-requisitos)
+    *   [Pré-requisitos](#pré-requisitos)
         
-    *   [Clonar o Repositório](https://www.google.com/search?q=%23clonar-o-reposit%C3%B3rio)
+    *   [Clonar o Repositório](#clonar-o-repositório)
         
-    *   [Configuração do Banco de Dados (SQLite)](https://www.google.com/search?q=%23configura%C3%A7%C3%A3o-do-banco-de-dados-sqlite)
+    *   [Configuração do Banco de Dados (SQLite)](#configuração-do-banco-de-dados-sqlite)
         
-    *   [Rodar a Aplicação](https://www.google.com/search?q=%23rodar-a-aplica%C3%A7%C3%A3o)
+    *   [Rodar a Aplicação](#rodar-a-aplicação)
 
     * [Rodar a Aplicação com Docker Compose](#rodar-a-aplicação-com-docker-compose)
         
-    *   [Acessar a Documentação da API (Swagger)](https://www.google.com/search?q=%23acessar-a-documenta%C3%A7%C3%A3o-da-api-swagger)
+    *   [Acessar a Documentação da API (Swagger)](#acessar-a-documentação-da-api-swagger)
         
-*   [Visão Geral da Arquitetura](https://www.google.com/search?q=%23vis%C3%A3o-geral-da-arquitetura)
+*   [Visão Geral da Arquitetura](#visão-geral-da-arquitetura)
     
-    *   [Estrutura de Camadas](https://www.google.com/search?q=%23estrutura-de-camadas)
+    *   [Estrutura de Camadas](#estrutura-de-camadas)
         
-    *   [Fluxo de Dados (Requisição -> Resposta)](https://www.google.com/search?q=%23fluxo-de-dados-requisi%C3%A7%C3%A3o---resposta)
+    *   [Fluxo de Dados (Requisição -> Resposta)](#fluxo-de-dados-requisição---resposta)
         
-*   [Principais Decisões de Design e Arquitetura](https://www.google.com/search?q=%23principais-decis%C3%B5es-de-design-e-arquitetura)
+*   [Principais Decisões de Design e Arquitetura](#principais-decisões-de-design-e-arquitetura)
     
-    *   [Arquitetura (Clean Architecture / Hexagonal)](https://www.google.com/search?q=%23arquitetura-clean-architecture--hexagonal)
+    *   [Arquitetura (Clean Architecture / Hexagonal)](#arquitetura-clean-architecture--hexagonal)
         
-    *   [Princípios SOLID](https://www.google.com/search?q=%23princ%C3%ADpios-solid)
+    *   [Princípios SOLID](#princípios-solid)
         
-    *   [Padrões de Design](https://www.google.com/search?q=%23padr%C3%B5es-de-design)
+    *   [Padrões de Design](#padrões-de-design)
         
-    *   [Escolha do Banco de Dados](https://www.google.com/search?q=%23escolha-do-banco-de-dados)
+    *   [Escolha do Banco de Dados](#escolha-do-banco-de-dados)
         
-    *   [Resiliência (Polly)](https://www.google.com/search?q=%23resili%C3%AAncia-polly)
+    *   [Resiliência (Polly)](#resiliência-polly)
         
-    *   [Concorrência e Consistência](https://www.google.com/search?q=%23concorr%C3%AAncia-e-consist%C3%AAncia)
+    *   [Concorrência e Consistência](#concorrência-e-consistência)
         
-    *   [Rollback e Idempotência](https://www.google.com/search?q=%23rollback-e-idempot%C3%AAncia)
+    *   [Rollback e Idempotência](#rollback-e-idempotência)
         
-*   [Como Rodar os Testes](https://www.google.com/search?q=%23como-rodar-os-testes)
+*   [Como Rodar os Testes](#como-rodar-os-testes)
     
-    *   [Testes Unitários](https://www.google.com/search?q=%23testes-unit%C3%A1rios)
+    *   [Testes Unitários](#testes-unitários)
         
-    *   [Testes de Integração](https://www.google.com/search?q=%23testes-de-integra%C3%A7%C3%A3o)
+    *   [Testes de Integração](#testes-de-integração)
         
-    *   [Testes de Concorrência](https://www.google.com/search?q=%23testes-de-concorr%C3%AAncia)
+    *   [Testes de Concorrência](#testes-de-concorrência)
         
 
 Visão Geral do Projeto
