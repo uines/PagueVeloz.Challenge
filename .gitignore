@@ -1,0 +1,91 @@
+# Arquivo .gitignore para projetos .NET
+
+# Ignorar pastas de binários de build
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+# Para .NET 8 e versões mais recentes, a pasta padrão de saída para builds é 'artifacts'
+[Aa]rtifacts/
+
+# Ignorar arquivos de banco de dados SQLite
+# O arquivo do seu DB (PagueVelozChallenge.db)
+*.db
+*.sqlite
+*.sqlite3
+
+# Ignorar arquivos gerados por ferramentas/IDE
+.vs/                   # Pasta oculta do Visual Studio
+*.suo                   # Arquivos de opções da solução
+*.user                  # Arquivos de configurações de usuário
+*.useros                 # Arquivos de configurações de usuário do VS 2022
+*.sln.docstates         # Estados da documentação da solução
+*.resharper              # Arquivos do ReSharper
+*.dotCover               # Arquivos do dotCover
+*.kpd                   # Arquivos do KPD
+
+# Ignorar arquivos de backup e logs
+*.bak
+*.log
+log/
+logs/
+
+# Ignorar pacotes NuGet e caches
+packages/
+.nuget/nuget/          # Cache global do NuGet
+# Ignorar arquivos de restauração de pacotes
+project.assets.json
+# Ignorar configurações de NuGet específicas do usuário (se existirem no projeto)
+NuGet.Config
+
+# Ignorar diretórios de restauração de pacotes
+# Normalmente eles ficam fora do projeto em ~/.nuget/packages ou em solution-level packages folder
+# mas se você tiver uma pasta 'packages' no projeto, ignore-a
+packages/
+
+# Ignorar arquivos de publicação
+publish/
+tmp/
+
+# Ignorar arquivos de configuração de ambiente (senhas, chaves de API, etc.)
+appsettings*.Development.json # Se você tiver informações sensíveis no ambiente de desenvolvimento que não devem ir para o Git
+appsettings*.Production.json # Geralmente gerado no pipeline, mas para segurança, pode ser bom ignorar localmente
+*.usersecrets
+.env                    # Arquivos de variáveis de ambiente
+
+# Ignorar arquivos de teste
+TestResults/
+.trx
+
+# Arquivos de dependências restauradas de node_modules (se você tiver um frontend integrado com Node.js)
+node_modules/
+
+# Ignorar diretórios de perfil de usuário do IIS Express
+.vs/config/
+
+# Ignorar arquivos gerados pelo Rider (JetBrains IDE)
+.idea/
+
+# Outros arquivos diversos
+*.zip
+*.rar
+*.7z
+*.gz
+*.tar
+*.iso
+
+# Ignorar dumps de memória
+*.dmp
+
+# Ignorar arquivos de cobertura de código
+*.coverage
+*.coveragexml
+
+# Cache de compilação do Roslyn
+.roslyn/
+
+# Arquivos de contêiner (se você dockerizar no futuro)
+# Pode querer incluir ou não Dockerfile dependendo da sua estratégia
+# .dockerignore
+# Dockerfile.orig
+/.vs
