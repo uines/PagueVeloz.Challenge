@@ -1,0 +1,6 @@
+@PagueVeloz.Challenge.Api_HostAddress = http://localhost:5115
+
+GET {{PagueVeloz.Challenge.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

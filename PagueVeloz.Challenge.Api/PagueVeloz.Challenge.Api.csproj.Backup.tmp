@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PagueVeloz.Challenge.Application\PagueVeloz.Challenge.Application.csproj" />
+    <ProjectReference Include="..\PagueVeloz.Challenge.Domain\PagueVeloz.Challenge.Domain.csproj" />
+    <ProjectReference Include="..\PagueVeloz.Challenge.Infrastructure\PagueVeloz.Challenge.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
