@@ -19,6 +19,8 @@ Sumário
     *   [Configuração do Banco de Dados (SQLite)](https://www.google.com/search?q=%23configura%C3%A7%C3%A3o-do-banco-de-dados-sqlite)
         
     *   [Rodar a Aplicação](https://www.google.com/search?q=%23rodar-a-aplica%C3%A7%C3%A3o)
+
+    * [Rodar a Aplicação com Docker Compose](#rodar-a-aplicação-com-docker-compose)
         
     *   [Acessar a Documentação da API (Swagger)](https://www.google.com/search?q=%23acessar-a-documenta%C3%A7%C3%A3o-da-api-swagger)
         
@@ -83,7 +85,8 @@ Como Configurar e Rodar o Projeto
 *   [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
     
 *   Um editor de código como [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) ou [VS Code](https://code.visualstudio.com/)
-    
+
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/) (necessário para a execução via Docker Compose)   
 
 ### Clonar o Repositório
 
@@ -119,6 +122,31 @@ Bash
     dotnet run
 
 A aplicação será iniciada, geralmente na porta `5000` (HTTP) e `5001` (HTTPS). Você verá as URLs no console.
+
+### Rodar a Aplicação com Docker Compose
+Esta é a forma recomendada para executar a aplicação, pois encapsula todas as dependências e o banco de dados em contêineres, proporcionando um ambiente isolado e consistente.
+
+1. **Certifique-se de estar na raiz da solução** (onde está o arquivo docker-compose.yml):
+    Bash
+        
+        cd PagueVeloz.Challenge
+
+2. **Construa e inicie os contêineres:**  
+    Bash 
+
+        docker compose up --build -d
+
+    * `--build`: Garante que as imagens Docker sejam construídas (ou reconstruídas se houver alterações no código ou Dockerfile).
+    * `-d`: Inicia os contêineres em modo `detached` (em segundo plano).
+
+3. **Verificar o status dos contêineres (opcional):**
+    Bash
+        docker compose ps
+
+4. **Para parar e remover os contêineres:**
+
+    * O volume de dados do SQLite (`db_data`) será persistido, então seus dados não se perderão entre as execuções de `down` e `up`.
+    * Para remover também o volume de dados (e resetar o DB), use `docker compose down -v`.
 
 ### Acessar a Documentação da API (Swagger)
 
