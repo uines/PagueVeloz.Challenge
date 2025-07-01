@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Commands\Conta\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Queries\Cliente\" />
   </ItemGroup>
 
   <ItemGroup>

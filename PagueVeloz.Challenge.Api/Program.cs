@@ -10,11 +10,9 @@ using PagueVeloz.Challenge.Application.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    // Use um arquivo SQLite no diretório da aplicação
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
@@ -45,6 +43,7 @@ builder.Services.AddScoped<GetSaldoContaQueryHandler>();
 builder.Services.AddScoped<GetHistoricoTransacoesQueryHandler>(); 
 builder.Services.AddScoped<GetTransacaoByIdQueryHandler>();
 builder.Services.AddScoped<RealizarDepositoCommandHandler>();
+builder.Services.AddScoped<GetClienteByIdQueryHandler>();
 builder.Services.AddValidatorsFromAssemblyContaining<CriarClienteCommandValidator>();
 
 

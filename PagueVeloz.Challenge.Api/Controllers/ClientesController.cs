@@ -3,7 +3,8 @@ using PagueVeloz.Challenge.Application.Commands.Cliente;
 using PagueVeloz.Challenge.Application.DTOs;
 using PagueVeloz.Challenge.Application.Handlers;
 using PagueVeloz.Challenge.Application.Queries.Conta;
-using PagueVeloz.Challenge.Application.Queries.Transacao; 
+using PagueVeloz.Challenge.Application.Queries.Transacao;
+using PagueVeloz.Challenge.Application.Queries.Cliente;
 
 namespace PagueVeloz.Challenge.Api.Controllers
 {
@@ -12,17 +13,17 @@ namespace PagueVeloz.Challenge.Api.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly CriarClienteCommandHandler _criarClienteHandler;
-        private readonly GetSaldoContaQueryHandler _getSaldoContaQueryHandler; 
         private readonly GetHistoricoTransacoesQueryHandler _getHistoricoTransacoesQueryHandler;
+        private readonly GetClienteByIdQueryHandler _getClienteByIdQueryHandler;
 
         public ClientesController(
             CriarClienteCommandHandler criarClienteHandler,
-            GetSaldoContaQueryHandler getSaldoContaQueryHandler,
-            GetHistoricoTransacoesQueryHandler getHistoricoTransacoesQueryHandler)
+            GetHistoricoTransacoesQueryHandler getHistoricoTransacoesQueryHandler,
+            GetClienteByIdQueryHandler getClienteByIdQueryHandler)
         {
             _criarClienteHandler = criarClienteHandler;
-            _getSaldoContaQueryHandler = getSaldoContaQueryHandler;
             _getHistoricoTransacoesQueryHandler = getHistoricoTransacoesQueryHandler;
+            _getClienteByIdQueryHandler = getClienteByIdQueryHandler;
         }
 
         /// <summary>
@@ -72,15 +73,21 @@ namespace PagueVeloz.Challenge.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetClienteById(Guid id)
         {
-            // Por enquanto, apenas um stub. Você precisaria de um GetClienteByIdQuery e seu handler.
-            // var cliente = await _getClienteByIdQueryHandler.Handle(new GetClienteByIdQuery(id));
-            // if (cliente == null)
-            // {
-            //     return NotFound();
-            // }
-            // return Ok(cliente);
+            try
+            {
+                var query = new GetClienteByIdQuery(id);
+                var cliente = await _getClienteByIdQueryHandler.Handle(query);
 
-            return StatusCode(StatusCodes.Status501NotImplemented, "Este endpoint ainda não foi implementado. Foco no desafio principal.");
+                if (cliente == null)
+                {
+                    return NotFound();
+                }
+                return Ok(cliente); 
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Ocorreu um erro interno ao consultar o cliente.", error = ex.Message });
+            }
         }
 
         /// <summary>
