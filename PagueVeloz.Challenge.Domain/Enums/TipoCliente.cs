@@ -2,7 +2,7 @@
 {
     public enum TipoCliente
     {
-        PF, 
-        PJ 
+        PF = 1, 
+        PJ = 2 
     }
 }

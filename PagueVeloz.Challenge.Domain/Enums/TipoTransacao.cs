@@ -2,11 +2,11 @@
 {
     public enum TipoTransacao
     {
-        VendaCreditoAVista,
-        VendaCreditoParcelado,
-        VendaDebito,
-        Estorno,
-        Transferencia,
-        Deposito
+        VendaCreditoAVista = 1,
+        VendaCreditoParcelado = 2,
+        VendaDebito = 3,
+        Estorno = 4,
+        Transferencia = 5,
+        Deposito = 6
     }
 }

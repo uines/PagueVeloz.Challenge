@@ -1,33 +1,55 @@
 ﻿using FluentValidation;
-using PagueVeloz.Challenge.Application.Commands.Cliente;
+using PagueVeloz.Challenge.Application.DTOs;
 using PagueVeloz.Challenge.Domain.Enums;
 
 namespace PagueVeloz.Challenge.Application.Validators
 {
-    public class CriarClienteCommandValidator : AbstractValidator<CriarClienteCommand>
+    public class CriarClienteDTOValidator : AbstractValidator<CriarClienteDTO> 
     {
-        public CriarClienteCommandValidator()
+        public CriarClienteDTOValidator()
         {
             RuleFor(x => x.Nome)
                 .NotEmpty().WithMessage("O nome é obrigatório.")
                 .MaximumLength(250).WithMessage("O nome não pode exceder 250 caracteres.");
 
             RuleFor(x => x.Documento)
-                .Must(IsCpfValid).When(x => x.Tipo == TipoCliente.PF)
+                .Must(BeValidCpf).When(x => x.Tipo == TipoCliente.PF)
                 .WithMessage("O CPF é inválido.");
 
             RuleFor(x => x.Documento)
-                .Must(IsCnpjValid).When(x => x.Tipo == TipoCliente.PJ)
+                .Must(BeValidCnpj).When(x => x.Tipo == TipoCliente.PJ)
                 .WithMessage("O CNPJ é inválido.");
 
             RuleFor(x => x.Tipo)
                 .IsInEnum().WithMessage("O tipo de cliente é inválido.");
+
+            RuleFor(x => x.TipoConta)
+               .IsInEnum().WithMessage("O tipo de conta é inválido.");
         }
 
-        private bool IsCpfValid(string cpf)
+        private bool BeValidCpf(string documento)
         {
-            if (cpf.All(char.IsDigit) && cpf.Distinct().Count() == 1)
-                return false;
+            var cleanDocument = new string(documento.Where(char.IsDigit).ToArray());
+            return IsCpfValid(cleanDocument);
+        }
+
+        private bool BeValidCnpj(string documento)
+        {
+            var cleanDocument = new string(documento.Where(char.IsDigit).ToArray());
+            return IsCnpjValid(cleanDocument);
+        }
+
+        private string CleanDocument(string documento)
+        {
+            return new string(documento.Where(char.IsDigit).ToArray());
+        }
+
+        private bool IsCpfValid(string documento)
+        {
+            var cpf = CleanDocument(documento);
+
+            if (cpf.Length != 11) return false;
+            if (cpf.Distinct().Count() == 1) return false; 
 
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -35,10 +57,6 @@ namespace PagueVeloz.Challenge.Application.Validators
             string digito;
             int soma;
             int resto;
-
-            cpf = cpf.Trim();
-            if (cpf.Length != 11)
-                return false;
 
             tempCpf = cpf.Substring(0, 9);
             soma = 0;
@@ -64,10 +82,12 @@ namespace PagueVeloz.Challenge.Application.Validators
             return cpf.EndsWith(digito);
         }
 
-        private bool IsCnpjValid(string cnpj)
+        private bool IsCnpjValid(string documento)
         {
-            if (cnpj.All(char.IsDigit) && cnpj.Distinct().Count() == 1)
-                return false;
+            var cnpj = CleanDocument(documento);
+
+            if (cnpj.Length != 14) return false;
+            if (cnpj.Distinct().Count() == 1) return false; 
 
             int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -75,10 +95,6 @@ namespace PagueVeloz.Challenge.Application.Validators
             string digito;
             int soma;
             int resto;
-
-            cnpj = cnpj.Trim();
-            if (cnpj.Length != 14)
-                return false;
 
             tempCnpj = cnpj.Substring(0, 12);
             soma = 0;

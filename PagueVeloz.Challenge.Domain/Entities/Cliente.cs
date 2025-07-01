@@ -14,7 +14,7 @@ namespace PagueVeloz.Challenge.Domain.Entities
 
         private Cliente() { }
 
-        public Cliente(string nome, string documento, TipoCliente tipo)
+        public Cliente(string nome, string documento, TipoCliente tipo, TipoConta tipoConta)
         {
             Id = Guid.NewGuid();
             Nome = nome;
@@ -22,7 +22,7 @@ namespace PagueVeloz.Challenge.Domain.Entities
             Tipo = tipo;
 
 
-            Conta = new Conta(TipoConta.Corrente); 
+            Conta = new Conta(tipoConta); 
             ContaId = Conta.Id;
         }
         public void AtualizarInformacoes(string novoNome, string novoDocumento)
@@ -32,11 +32,6 @@ namespace PagueVeloz.Challenge.Domain.Entities
 
             Nome = novoNome;
             Documento = novoDocumento;
-        }
-        public void AlterarTipoConta(TipoConta novoTipo)
-        {
-            if (Conta == null)
-                throw new InvalidOperationException("Cliente não possui uma conta associada.");
         }
     }
 }

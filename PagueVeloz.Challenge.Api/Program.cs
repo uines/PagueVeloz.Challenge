@@ -20,7 +20,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Adicionar e configurar FluentValidation
 builder.Services.AddFluentValidationAutoValidation();
-builder.Services.AddFluentValidationClientsideAdapters(); 
+builder.Services.AddFluentValidationClientsideAdapters();
+
+builder.Services.AddValidatorsFromAssemblyContaining<CriarClienteDTOValidator>();
+
 
 // Registrar os Repositórios
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();

@@ -2,7 +2,7 @@
 {
     public enum TipoConta
     {
-        Corrente, 
-        Pagamento
+        Corrente = 1, 
+        Pagamento = 2
     }
 }

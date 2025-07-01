@@ -24,7 +24,7 @@ namespace PagueVeloz.Challenge.Application.Handlers
                 throw new InvalidOperationException("Já existe um cliente cadastrado com este documento.");
             }
 
-            var novoCliente = new Cliente(command.Nome, command.Documento, command.Tipo);
+            var novoCliente = new Cliente(command.Nome, command.Documento, command.Tipo, command.TipoConta);
             await _clienteRepository.AddAsync(novoCliente);
 
             var saved = await _unitOfWork.Commit();

@@ -2,7 +2,7 @@
 {
     public enum StatusConta
     {
-        Ativa,
-        Inativa
+        Inativa = 0,
+        Ativa = 1
     }
 }

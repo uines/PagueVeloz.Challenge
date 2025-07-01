@@ -8,12 +8,14 @@ namespace PagueVeloz.Challenge.Application.Commands.Cliente
         public string Nome { get; set; } = string.Empty;
         public string Documento { get; set; } = string.Empty;
         public TipoCliente Tipo { get; set; }
+        public TipoConta TipoConta { get; set; }
 
         public CriarClienteCommand(CriarClienteDTO dto)
         {
             Nome = dto.Nome;
             Documento = dto.Documento;
             Tipo = dto.Tipo;
+            TipoConta = dto.TipoConta;
         }
     }
 }
